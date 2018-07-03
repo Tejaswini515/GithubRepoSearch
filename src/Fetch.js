@@ -50,7 +50,7 @@ class Fetch extends Component {
                 <input style={{width: "100%",height:"25px",borderTop:"2px"}} 
                        type="text" 
                        onChange={this.diffUser}
-                       placeHolder="Please enter username"/>
+                       placeholder="Please enter username"/>
                 <ul style={{padding:'0px'}}> {this.state.list} </ul>
             </div>
         );
