@@ -8,9 +8,10 @@ const userFound = (repos) => {
     }
 }
 
-const noRepos = () => {
+const noRepos = (userName) => {
     return {
         type: "NO_REPOS",
+        userName: userName,
     }
 }
 
@@ -26,7 +27,7 @@ function searchUsers(userName){
                .then((res) => {
                    if(res.data.length === 0){
                        console.log('No Repos')
-                        store.dispatch((noRepos()))
+                        store.dispatch((noRepos(userName)))
                    }
                     else{
                         store.dispatch((userFound(res.data)))

@@ -33,7 +33,7 @@ class Fetch extends Component {
                        onChange={this.diffUser}
                        placeholder="Please enter username"/>
                 {(store.getState().list !== null) ? <List list={store.getState().list} /> : null}               
-                <h3> {store.getState().message} </h3> 
+                <p> {store.getState().message} </p> 
             </div>
         );
     }

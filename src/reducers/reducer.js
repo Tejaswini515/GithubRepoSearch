@@ -2,7 +2,7 @@
 
 const initialState = {
     list: null,
-    message: ''
+    message: '',
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
 
         case "USER_NOT_FOUND": return Object.assign({}, state, {list: [], message: 'No Such User'});
 
-        case "NO_REPOS": return Object.assign({}, state, {list: [], message:"No Repos for this User"});
+        case "NO_REPOS": return Object.assign({}, state, {list: [], message:`${action.userName} has no repos`});
 
         default: return state;  
     }
