@@ -1,19 +1,19 @@
-import axios from 'axios';
+// import axios from 'axios';
 import store from '../stores';
 
-const userFound = (repos) => {
-    return {
-        type: "USER_FOUND",
-        data: repos,
-    }
-}
+// const userFound = (repos) => {
+//     return {
+//         type: "USER_FOUND",
+//         data: repos,
+//     }
+// }
 
-const noRepos = (userName) => {
-    return {
-        type: "NO_REPOS",
-        userName: userName,
-    }
-}
+// const noRepos = (userName) => {
+//     return {
+//         type: "NO_REPOS",
+//         userName: userName,
+//     }
+// }
 
 const userNotFound = () => {
     return {
@@ -23,18 +23,21 @@ const userNotFound = () => {
 
 function searchUsers(userName){
     return (dispatch) => {
-        return axios.get(`https://api.github.com/users/${userName}/repos`)
+        return fetch(`https://api.github.com/users/${userName}/repos`)
                .then((res) => {
-                   if(res.data.length === 0){
-                       console.log('No Repos')
-                        store.dispatch((noRepos(userName)))
-                   }
-                    else{
-                        store.dispatch((userFound(res.data)))
-                    }
+                console.log("Response: ",res);
+                   console.log("Json: ",res.json);
+                //    if(res.data.length === 0){
+                //        console.log('No Repos')
+                //         store.dispatch((noRepos(userName)))
+                //    }
+                //     else{
+                //         store.dispatch((userFound(res.data)))
+                //     }
                 }   
                ).catch((err)=> {
-                    console.log('User not found');
+                   console.log("Error ",err);
+                    // console.log('User not found');
                     store.dispatch((userNotFound()));
                })
     }
