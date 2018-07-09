@@ -22,10 +22,6 @@ class Fetch extends Component {
 
     render(){
 
-        const message = store.getState().message;
-        console.log("Printing Message", message);
-        console.log("Printing List", store.getState().list);
-
         return(
             <div>
                 <input style={{width: "100%",height:"25px",borderTop:"2px"}} 

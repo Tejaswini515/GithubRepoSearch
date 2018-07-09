@@ -11,6 +11,8 @@ const reducer = (state = initialState, action) => {
 
         case "USER_NOT_FOUND": return Object.assign({}, state, {list: [], message: 'No Such User'});
 
+        case "FETCH_ERROR": return Object.assign({}, state, {list: [], message: `${action.err}`});
+
         case "NO_REPOS": return Object.assign({}, state, {list: [], message:`${action.userName} has no repos`});
 
         default: return state;  
