@@ -1,27 +1,27 @@
 // import axios from 'axios';
 import store from '../stores';
 
-const userFound = (repos) => {
+export const userFound = (repos) => {
     return {
         type: "USER_FOUND",
         data: repos,
     }
 }
 
-const noRepos = (userName) => {
+export const noRepos = (userName) => {
     return {
         type: "NO_REPOS",
         userName: userName,
     }
 }
 
-const userNotFound = () => {
+export const userNotFound = () => {
     return {
         type: "USER_NOT_FOUND",
     }
 }
 
-const fetchError = (error) => {
+export const fetchError = (error) => {
     return {
         type: "FETCH_ERROR",
         err: error,

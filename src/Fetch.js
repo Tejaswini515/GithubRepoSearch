@@ -4,7 +4,7 @@ import List from './components/list';
 import  searchUsers from './actions/actions';
 import store from './stores';
 
-class Fetch extends Component {
+export class Fetch extends Component {
 
     state = {
         userName: '',
