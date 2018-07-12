@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Fetch from './Fetch';
+import { Fetch } from './Fetch';
 import './App.css';
 
 class App extends Component {

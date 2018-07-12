@@ -1,5 +1,4 @@
 
-
 const initialState = {
     list: null,
     message: '',

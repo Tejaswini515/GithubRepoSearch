@@ -7,12 +7,18 @@ Enzyme.configure({ adapter: new Adapter() });
 
 describe('Render Fetch Component', () => {
 
-  it('render snapshot', () => {
+  let wrapper;
 
-    const wrapper = render(<Fetch />);
+  beforeEach(()=> {
+     wrapper = render(<Fetch />);
+  })
+
+  it('render snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
   
+  it('render input element', () => {
+    expect(wrapper.find('input').prop('placeholder')).toEqual('Please enter username');
+  })
+
 });
-
-
