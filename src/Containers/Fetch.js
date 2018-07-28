@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import List from './components/list';
-import  searchUsers from './actions/actions';
-import store from './stores';
+import List from '../Components/list';
+import { searchUsers } from '../stores/actions';
 
 export class Fetch extends Component {
 
     state = {
         userName: '',
-        list: []
     }
 
     diffUser = async(e) => {
@@ -17,7 +15,8 @@ export class Fetch extends Component {
         await this.setState({
             userName: user,
         });
-        store.dispatch(searchUsers(user))
+
+        this.props.searchUsers(this.state.userName);
     }
 
     render(){
@@ -28,17 +27,26 @@ export class Fetch extends Component {
                        type="text" 
                        onChange={this.diffUser}
                        placeholder="Please enter username"/>
-                {(store.getState().list !== null) ? <List list={store.getState().list} /> : null}               
-                <p> {store.getState().message} </p> 
+                {(this.props.list) ? <List list={this.props.list} /> : null}               
+                <p> {this.props.message} </p> 
             </div>
         );
     }
 }
 
-function mapStateToProps(state){
+const mapStateToProps = state => {
 	return {
-		list : state.list
+        list : state.list,
+        message: state.message
 	}
 }
 
-export default connect(mapStateToProps)(Fetch);
+const mapDispatchToProps = dispatch => {
+    return {
+        searchUsers: (userName) => {
+        dispatch(searchUsers(userName))
+      }
+    };
+  };
+
+export default connect(mapStateToProps,mapDispatchToProps)(Fetch);

@@ -1,5 +1,3 @@
-// import axios from 'axios';
-import store from '../stores';
 
 export const userFound = (repos) => {
     return {
@@ -28,7 +26,8 @@ export const fetchError = (error) => {
     }
 }
 
-function searchUsers(userName){
+export function searchUsers(userName){
+    console.log(userName);
     return (dispatch) => {
         return fetch(`https://api.github.com/users/${userName}/repos`)
                .then(res => {
@@ -42,17 +41,15 @@ function searchUsers(userName){
                .then(data => {
                    if(data.length === 0){
                        console.log('No Repos')
-                        store.dispatch((noRepos(userName)))
+                        dispatch((noRepos(userName)))
                    }
                     else{
-                        store.dispatch((userFound(data)))
+                        dispatch((userFound(data)))
                     }
                 }).catch((err)=> {
                     console.log("Error", err);
-                   if(err.message === '404') store.dispatch((userNotFound()));
-                   else store.dispatch((fetchError(err)));
+                   if(err.message === '404') dispatch((userNotFound()));
+                   else dispatch((fetchError(err)));
                })
     }
 }
-
-export default searchUsers;
