@@ -1,4 +1,4 @@
-# GithubRepoSearcg
+# GithubRepoSearch
 React App to search repositories of github users with username. Created with create-react-app.
 
 ## Usage
